@@ -11,3 +11,6 @@ pip install -r requirements.txt
 ```
 streamlit run dashboard/dashboard.py
 ```
+
+## Link Sertifikat Kelulusan
+https://www.dicoding.com/certificates/QLZ93N712Z5D 
