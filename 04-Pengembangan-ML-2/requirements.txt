@@ -1,0 +1,9 @@
+pandas==2.2.3
+numpy==1.26.4
+matplotlib==3.10.1
+seaborn==0.13.2
+wordcloud==1.9.4
+nltk==3.9.1
+scikit-learn==1.6.1
+tensorflow==2.19.0
+requests==2.32.3
