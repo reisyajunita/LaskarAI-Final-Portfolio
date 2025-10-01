@@ -1,5 +1,7 @@
 # 🤖 LaskarAI Final Portfolio: End-to-End Machine Learning & Data Science Projects
 
+![Screenshot Program Laskar Ai](https://raw.githubusercontent.com/reisyajunita/LaskarAI-Final-Portfolio/70795312fbbe9a5250ea23f9d6bef810694f86ee/Screenshot%202025-06-20%20150646.png)
+
 ## Portfolio Owner
 **Nama:** Reisya Junita    
 **Program:** Laskar AI (AI Engineering / Lintasarta x Dicoding)    
