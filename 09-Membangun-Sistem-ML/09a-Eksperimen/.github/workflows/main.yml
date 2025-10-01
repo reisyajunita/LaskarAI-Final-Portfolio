@@ -1,0 +1,55 @@
+name: Automated Data Preprocessing
+
+on:
+  push:
+    branches:
+      - main  # Pastikan ini nama branch utama di repository GitHub-mu
+    paths:
+      # Jalankan workflow hanya jika ada perubahan di file/folder ini:
+      - 'telco-dataset_raw/telco_dataset.csv'     # KONFIRMASI 1: Nama folder dan file data mentah
+      - 'preprocessing/automate_Reisya-Junita.py' # KONFIRMASI 2: Nama script otomasimu
+  workflow_dispatch: # Ini menjalankan workflow secara manual dari tab Actions
+
+jobs:
+  preprocess-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7' # Pastikan versi Python ini sesuai dengan yang kamu gunakan
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Pastikan file 'requirements.txt' ada di 'Eksperimen_SML_Nama-kamu/preprocessing/requirements.txt'
+          pip install -r preprocessing/requirements.txt 
+
+      - name: Run preprocessing script
+        working-directory: ./preprocessing # Direktori kerja diubah ke 'preprocessing'
+        run: python automate_Reisya-Junita.py # Menjalankan script dari dalam 'preprocessing'
+                                             # Script ini akan membaca '../telco-dataset_raw/telco_dataset.csv'
+                                             # dan menulis ke './telco-dataset_preprocessing/dataset_processed.csv' (relatif thd 'preprocessing')
+
+      - name: Commit and push preprocessed data
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Path ini relatif dari root repository
+          # KONFIRMASI 3: Path ke file output yang akan di-commit
+          git add preprocessing/telco-dataset_preprocessing/dataset_processed.csv 
+          
+          if [[ -n $(git status --porcelain) ]]; then # Ini sudah benar sintaksnya
+            git commit -m "Automated preprocessing: Update processed data (via GitHub Actions)"
+            git push
+            echo "Processed data committed and pushed."
+          else
+            echo "No changes to commit in processed data."
+          fi # Ini juga sudah benar
