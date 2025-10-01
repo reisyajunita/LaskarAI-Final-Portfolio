@@ -1,2 +1,0 @@
-Link Dashboard
-https://bike-sharing-dashboard-fuhxsygg5yjspf2n6ln9ad.streamlit.app/
